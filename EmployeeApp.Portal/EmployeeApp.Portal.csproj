@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeApp.Data\EmployeeApp.Data.csproj" />
+    <ProjectReference Include="..\EmployeeApp.Services\EmployeeApp.Services.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,14 @@
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\bin\Debug\net6.0\EmployeeApp.Data.deps.json
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\bin\Debug\net6.0\EmployeeApp.Data.runtimeconfig.json
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\bin\Debug\net6.0\EmployeeApp.Data.dll
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\bin\Debug\net6.0\EmployeeApp.Data.pdb
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\EmployeeApp.Data.csproj.AssemblyReference.cache
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\EmployeeApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\EmployeeApp.Data.AssemblyInfoInputs.cache
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\EmployeeApp.Data.AssemblyInfo.cs
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\EmployeeApp.Data.csproj.CoreCompileInputs.cache
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\EmployeeApp.Data.dll
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\refint\EmployeeApp.Data.dll
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\EmployeeApp.Data.pdb
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\EmployeeApp.Data.genruntimeconfig.cache
+E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.Data\obj\Debug\net6.0\ref\EmployeeApp.Data.dll
