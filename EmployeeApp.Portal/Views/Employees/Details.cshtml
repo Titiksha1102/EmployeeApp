@@ -1,14 +1,13 @@
-﻿@model EmployeeApp.Data.Models.Employee
+﻿@model EmployeeApp.Portal.Models.EAGClientViewModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Welcome @Model.Name</h1>
 
 <div>
-    <h4>Employee</h4>
-    <hr />
+    
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -20,8 +19,17 @@
             @Html.DisplayNameFor(model => model.DateOfJoining)
         </dt>
         <dd class = "col-sm-10">
+
             @{
-                var formattedDate = Model.DateOfJoining.ToString("yyyy/MM/dd");
+                var formattedDate = "";
+                if (Model.DateOfJoining != null)
+                {
+                    formattedDate = Model.DateOfJoining.Value.Date.ToString();
+                }
+                else
+                {
+                    formattedDate = "Not assigned";
+                }
             }
             <span>@formattedDate</span>
         </dd>
@@ -29,27 +37,33 @@
             Group
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Group.Name)
+            @Html.DisplayFor(model => model.GroupName);
         </dd>
         <dt class="col-sm-2">
             Address
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Address.AddressLine1)
-            @Html.DisplayFor(model => model.Address.AddressLine2)
-            @Html.DisplayFor(model => model.Address.State)
-            @Html.DisplayFor(model => model.Address.Country)
+            @Html.DisplayFor(model => model.AddressLine1)
+            @Html.DisplayFor(model => model.AddressLine2)
+            @Html.DisplayFor(model => model.State)
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsActive)
+            @Html.DisplayNameFor(model => model.Phone)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsActive)
+            @Html.DisplayFor(model => model.Phone)
         </dd>
         
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+@*     <a asp-action="Edit" asp-route-id="@Model?.Id" asp-route-addressid="@Model.AddressId">Edit</a> |
+ *@    <a asp-action="Index">Back to List</a>
 </div>

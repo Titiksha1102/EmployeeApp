@@ -1,4 +1,6 @@
 ﻿using EmployeeApp.Data.Data;
+
+
 using EmployeeApp.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -15,17 +17,17 @@ namespace EmployeeApp.Data.Interfaces.AddressRepo
         {
             _context = context;
         }
-        public Address Create(Address address)
+        public async Task<Address> Create(Address address)
         {
             _context.Addresses.Add(address);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return address;
         }
 
-        public Address Edit(Address address)
+        public async Task<Address> Edit(Address address)
         {
             _context.Update(address);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return address;
         }
     }

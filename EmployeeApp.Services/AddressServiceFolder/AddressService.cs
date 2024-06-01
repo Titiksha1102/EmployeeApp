@@ -15,14 +15,14 @@ namespace EmployeeApp.Services.AddressServiceFolder
         {
             _repo = repo;
         }
-        public Address Create(Address address)
+        public async Task<Address> Create(Address address)
         {
-            return _repo.Create(address);
+            return await _repo.Create(address);
         }
 
-        public Address Edit(Address address)
+        public async Task<Address> Edit(Address address)
         {
-            return _repo.Edit(address);
+            return await _repo.Edit(address);
         }
     }
 }

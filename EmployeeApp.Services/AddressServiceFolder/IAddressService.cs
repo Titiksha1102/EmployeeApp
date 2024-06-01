@@ -9,7 +9,7 @@ namespace EmployeeApp.Services.AddressServiceFolder
 {
     public interface IAddressService
     {
-        public Address Create(Address address);
-        public Address Edit(Address address);
+        public Task<Address> Create(Address address);
+        public Task<Address> Edit(Address address);
     }
 }

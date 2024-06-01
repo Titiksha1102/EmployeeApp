@@ -20,43 +20,35 @@ namespace EmployeeApp.Data.Interfaces.EmployeeRepo
             _context = context;
             _logger = logger;
         }
-        public Employee Create(Employee employee)
+        public async Task<User> Create(User user)
         {
-            _logger.LogInformation("inside repo create call");
+            
             try
             {
-                _logger.LogInformation(
-                "emp id:" + employee.Id +
-                " emp name:" + employee.Name +
-                " emp doj:" + employee.DateOfJoining +
-                " emp addId:" + employee.AddressId +
-                " emp grpId:" + employee.GroupId +
-                " emp isActive:" + employee.IsActive
-                );
-                _context.Employees.Add(employee);
-                _context.SaveChanges();
-                _logger.LogInformation("save changes executed");
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                
             }
             catch (Exception e)
             {
                 _logger.LogInformation(e.Message);
             }
-            return employee;
+            return user;
         }
-        public List<Employee> GetEmployees()
+        /*public async Task<IEnumerable<Employee>> GetEmployees()
         {
             _logger.LogInformation("inside repo get call");
 
 
-            var result = _context.Employees
+            var result = await _context.Employees
             .Include(e => e.Address)
             .Include(e => e.Group)
-            .ToList();
+            .ToListAsync();
 
 
             return result;
-        }
-        public Employee GetDetails(int? id)
+        }*/
+        /*public async Task<Employee> GetDetails(int? id)
         {
             if (id == null)
             {
@@ -73,16 +65,16 @@ namespace EmployeeApp.Data.Interfaces.EmployeeRepo
             }
 
             return employee;
-        }
+        }*/
 
-        public Employee Edit(int? id, Employee employee)
+        public async Task<Employee> Edit(int? id, Employee employee)
         {
             _logger.LogInformation("inside edit repo call");
             try
             {
 
                 _context.Update(employee);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 _logger.LogInformation("employee name from repo get: " + employee.Name);
             }
             catch (DbUpdateConcurrencyException)
@@ -96,12 +88,10 @@ namespace EmployeeApp.Data.Interfaces.EmployeeRepo
                     throw;
                 }*/
             }
-
-
             return employee;
         }
 
-        public bool Delete(int? id)
+        /*public async Task<bool> Delete(int? id)
         {
             if (id == null)
             {
@@ -115,10 +105,10 @@ namespace EmployeeApp.Data.Interfaces.EmployeeRepo
             }
             //delete operation
             _context.Employees.Remove(employee);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             var deletedobj = _context.Employees.FirstOrDefault(m => m.Id == id);
             if (deletedobj == null) return true;
             else return false;
-        }
+        }*/
     }
 }

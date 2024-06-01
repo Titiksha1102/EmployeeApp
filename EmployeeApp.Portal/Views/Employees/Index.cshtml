@@ -50,8 +50,17 @@
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
                 @{
-                    var fullAddress = $"{item.Address.AddressLine1}, {item.Address.AddressLine2},{item.Address.State}, {item.Address.Country}";
-                 }
+                    var fullAddress = "";
+                    if (item.Address.AddressLine2!=null)
+                    {
+                        fullAddress = $"{item.Address.AddressLine1}, {item.Address.AddressLine2},{item.Address.State}, {item.Address.Country}";
+                    }
+                    else
+                    {
+                        fullAddress = $"{item.Address.AddressLine1},{item.Address.State}, {item.Address.Country}";
+
+                    }
+                }
             <td>
                     <span>@fullAddress</span>
             </td>

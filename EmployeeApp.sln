@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApp.Data", "EmployeeApp.Data\EmployeeApp.Data.csproj", "{47620692-18FF-407C-A3F7-D239481EA5BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApp.Portal", "EmployeeApp.Portal\EmployeeApp.Portal.csproj", "{0030ED48-5D7E-4A74-8310-31763CE36140}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApp.Services", "EmployeeApp.Services\EmployeeApp.Services.csproj", "{165BBBB3-A718-4CEA-A2FD-7D1F187E7CDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApp.Services", "EmployeeApp.Services\EmployeeApp.Services.csproj", "{4572358F-270D-4CD2-91ED-46FC6746E354}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApp.Portal", "EmployeeApp.Portal\EmployeeApp.Portal.csproj", "{EA58F1BC-1211-4EF9-820B-2FE45F6B1231}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,5 +62,13 @@ Global
 		{4572358F-270D-4CD2-91ED-46FC6746E354}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4572358F-270D-4CD2-91ED-46FC6746E354}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4572358F-270D-4CD2-91ED-46FC6746E354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{165BBBB3-A718-4CEA-A2FD-7D1F187E7CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{165BBBB3-A718-4CEA-A2FD-7D1F187E7CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{165BBBB3-A718-4CEA-A2FD-7D1F187E7CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{165BBBB3-A718-4CEA-A2FD-7D1F187E7CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA58F1BC-1211-4EF9-820B-2FE45F6B1231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA58F1BC-1211-4EF9-820B-2FE45F6B1231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA58F1BC-1211-4EF9-820B-2FE45F6B1231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA58F1BC-1211-4EF9-820B-2FE45F6B1231}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

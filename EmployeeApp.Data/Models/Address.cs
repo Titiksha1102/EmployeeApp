@@ -10,7 +10,11 @@ namespace EmployeeApp.Data.Models
         public string? AddressLine2 { get; set; }
         public string State { get; set; } = null!;
         public string Country { get; set; } = null!;
+        public DateTime CreatedDate { get; set; }
+        public int CreatedPersonId { get; set; }
+        public DateTime LastModified { get; set; }
+        public int LastModifiedPersonId { get; set; }
 
-        public virtual Employee Employee { get; set; } = null!;
+        public virtual User User { get; set; } = null!;
     }
 }

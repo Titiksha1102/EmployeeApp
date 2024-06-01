@@ -20,21 +20,20 @@ namespace EmployeeApp.Services.EmployeeServiceFolder
             _logger = logger;
 
         }
-        public Employee Create(Employee e)
+        public async Task<User> Create(User u)
         {
-            _logger.LogInformation("inside service create call "+e.DateOfJoining);
-            return _repo.Create(e);
+            return await _repo.Create(u);
         }
-        public List<Employee> GetEmployees()
+        /*public async Task<IEnumerable<Employee>> GetEmployees()
         {
             _logger.LogInformation("inside service call");
-            return _repo.GetEmployees();
-        }
-        public Employee GetDetails(int? id)
+            return await _repo.GetEmployees();
+        }*/
+        /*public async Task<Employee> GetDetails(int? id)
         {
-            return _repo.GetDetails(id);
-        }
-        public Employee Edit(int? id, Employee employee)
+            return await _repo.GetDetails(id);
+        }*/
+        /*public async Task<Employee> Edit(int? id, Employee employee)
         {
             _logger.LogInformation("inside edit service call");
             if (id != employee.Id)
@@ -44,13 +43,13 @@ namespace EmployeeApp.Services.EmployeeServiceFolder
                 _logger.LogInformation("employee id is:" + employee.Id);
                 return null;
             }
-            return _repo.Edit(id, employee);
+            return await _repo.Edit(id, employee);
 
-        }
+        }*/
 
-        public bool Delete(int? id)
+        /*public async Task<bool> Delete(int? id)
         {
-            return _repo.Delete(id);
-        }
+            return await _repo.Delete(id);
+        }*/
     }
 }

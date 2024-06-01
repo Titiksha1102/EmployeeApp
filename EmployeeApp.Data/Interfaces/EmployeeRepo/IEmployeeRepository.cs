@@ -9,10 +9,10 @@ namespace EmployeeApp.Data.Interfaces.EmployeeRepo
 {
     public interface IEmployeeRepository
     {
-        public Employee Create(Employee employee);
-        public List<Employee> GetEmployees();
-        public Employee GetDetails(int? id);
-        public Employee Edit(int? id, Employee e);
-        public bool Delete(int? id);
+        public Task<User> Create(User user);
+       /* public Task<IEnumerable<Employee>> GetEmployees();
+        public Task<Employee> GetDetails(int? id);
+        public Task<Employee> Edit(int? id, Employee e);
+        public Task<bool> Delete(int? id);*/
     }
 }
