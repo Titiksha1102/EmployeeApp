@@ -25,8 +25,7 @@ namespace EmployeeApp.Portal.Models
         public string? GroupName { get; set; }
 
         //common properties
-        public int? createdPersonID { get; set; }
-        public int? lastModifiedPersonID { get; set; }
+        
 
     }
 }

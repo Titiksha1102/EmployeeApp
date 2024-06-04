@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EmployeeApp.Data.Models.Employee>
+﻿@model IEnumerable<EmployeeApp.Data.Models.User>
 
 @{
     ViewData["Title"] = "Index";
@@ -38,7 +38,11 @@
             </td>
             <td>
                     @{
-                        var formattedDate = item.DateOfJoining.ToString("yyyy/MM/dd");
+                        var formattedDate="";
+                        if (item.DateOfJoining != null)
+                            formattedDate = item.DateOfJoining.Value.Date.ToString();
+                        else
+                            formattedDate = "Not assigned";
                     }
                     <span>@formattedDate</span>
 
@@ -65,8 +69,8 @@
                     <span>@fullAddress</span>
             </td>
             <td>
-                <a href="Employees/Edit/@item.Id/@item.Address.Id"><button class="btn btn-primary">Edit</button></a> |
-                <a href="Employees/Details/@item.Id"><button class="btn btn-primary">Details</button></a> |
+                <a asp-action="Edit" asp-route-id="@item.Id" asp-route-addressid="@item.Address.Id"><button class="btn btn-primary">Edit</button></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><button class="btn btn-primary">Details</button></a> |
                 <a href="Employees/Delete/@item.Id"><button class="btn btn-danger">Delete</button></a>
             </td>
         </tr>

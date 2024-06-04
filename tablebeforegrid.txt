@@ -1,0 +1,79 @@
+@model IEnumerable<EmployeeApp.Data.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-controller="Employees" asp-action="Create"><button class="btn btn-success">Create New</button></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfJoining)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                    @{
+                        var formattedDate="";
+                        if (item.DateOfJoining != null)
+                            formattedDate = item.DateOfJoining.Value.Date.ToString();
+                        else
+                            formattedDate = "Not assigned";
+                    }
+                    <span>@formattedDate</span>
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+                @{
+                    var fullAddress = "";
+                    if (item.Address.AddressLine2!=null)
+                    {
+                        fullAddress = $"{item.Address.AddressLine1}, {item.Address.AddressLine2},{item.Address.State}, {item.Address.Country}";
+                    }
+                    else
+                    {
+                        fullAddress = $"{item.Address.AddressLine1},{item.Address.State}, {item.Address.Country}";
+
+                    }
+                }
+            <td>
+                    <span>@fullAddress</span>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" asp-route-addressid="@item.Address.Id"><button class="btn btn-primary">Edit</button></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><button class="btn btn-primary">Details</button></a> |
+                <a href="Employees/Delete/@item.Id"><button class="btn btn-danger">Delete</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

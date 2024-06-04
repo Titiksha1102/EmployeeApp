@@ -1,0 +1,25 @@
+_logger.LogInformation("" + user.Name);
+/*_logger.LogInformation("" + user.Address.AddressLine1);*/
+var eag = new EAGClientViewModel();
+
+eag.Name = user.Name;
+eag.Email = user.Email;
+eag.Phone = user.Phone;
+
+
+eag.AddressLine1 = user.Address.AddressLine1;
+eag.AddressLine2 = user.Address.AddressLine2;
+eag.State = user.Address.State;
+eag.Country = user.Address.Country;
+if (user.LastModifiedPersonId == 1)
+{
+    eag.GroupName = "Not assigned";
+}
+else
+{
+    eag.GroupName = _context.Groups
+                    .Where(g => g.Id == user.GroupId)
+                    .Select(g => g.Name)
+                    .FirstOrDefault();
+}
+return View(eag);

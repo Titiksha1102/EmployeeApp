@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Primitives;
+using EmployeeApp.Portal.Controllers;
 
 namespace EmployeeApp.Portal
 {
@@ -28,6 +29,14 @@ namespace EmployeeApp.Portal
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            var adminUsers = new List<string> { "DESKTOP-49J7JJ2\\Titiksha", "DESKTOP-49J7JJ2\\HP" };
+            services.AddSingleton(adminUsers);
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(60);
+            });
+            services.AddScoped<CustAuthAttribute>();
             services.AddLogging();
             services.AddControllers();
             services.AddMvc(options => options.EnableEndpointRouting = false);

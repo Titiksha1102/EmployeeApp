@@ -18,11 +18,7 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DateOfJoining" class="control-label"></label>
-                <input asp-for="DateOfJoining" class="form-control" />
-                <span asp-validation-for="DateOfJoining" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="AddressLine1" class="control-label"></label>
                 <input asp-for="AddressLine1" class="form-control" />
@@ -45,15 +41,16 @@
                 <span asp-validation-for="Country" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GroupName" class="control-label"></label>
-                <select asp-for="GroupName" asp-items="@ViewBag.GroupName"></select>
-                <span asp-validation-for="GroupName" class="text-danger"></span>
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

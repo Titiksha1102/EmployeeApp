@@ -12,6 +12,7 @@ using EmployeeApp.Services.EmployeeServiceFolder;
 using EmployeeApp.Services.AddressServiceFolder;
 using System.Text.RegularExpressions;
 using System.Numerics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeApp.Portal.Controllers
 {
@@ -22,43 +23,68 @@ namespace EmployeeApp.Portal.Controllers
         private readonly IEmployeeService _empservice;
         private readonly IAddressService _addressService;
         private readonly ILogger<EmployeesController> _logger;
+        private readonly List<string> _adminUsers;
 
-        public EmployeesController(EmployeeDB2Context context, IEmployeeService empservice, IAddressService addressService, ILogger<EmployeesController> logger)
+        public EmployeesController(EmployeeDB2Context context, 
+            IEmployeeService empservice, 
+            IAddressService addressService, 
+            ILogger<EmployeesController> logger,
+            List<string> adminUsers)
         {
             _context = context;
             _empservice = empservice;
             _addressService = addressService;
             _logger = logger;
+            _adminUsers = adminUsers;
         }
+        
 
-        // GET: Employees
+        
         [Route("/")]
+
         public async Task<IActionResult> Landing()
         {
-            
-            return View();
+            return View("Landing");
+            /*if (_adminUsers.Contains(HttpContext.User.Identity.Name))
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View("Landing");
+            }*/
         }
-        /*public async Task<IActionResult> Index()
-        {
-            var res =await _empservice.GetEmployees();
-            return View(res);
-        }*/
 
-        // GET: Employees/Details/5
-        [Route("Employees/Details")]
-        public async Task<IActionResult> Details(User user)
+        
+        [Route("Employees/Index")]
+        public async Task<IActionResult> Index()
         {
-            _logger.LogInformation("" + user.Name);
-            _logger.LogInformation("" + user.Address.AddressLine1);
+            var res = _context.Users
+            .Include(e => e.Address)
+            .Include(e => e.Group)
+            .ToList();
+            return View(res);
+        }
+        
+        
+        [Route("Employees/Details/{id}")]
+        public async Task<IActionResult> Details(int id)
+        {
+            _logger.LogInformation("" + id);
+            var user= _context.Users
+                .Include(e => e.Address)
+                .Include(e => e.Group)
+                .FirstOrDefault(m => m.Id == id);
+            ViewBag.empEditId = user.Id;
+            ViewBag.addressEditId = user.Address.Id;
             var eag = new EAGClientViewModel();
 
             eag.Name = user.Name;
             eag.Email = user.Email;
             eag.Phone = user.Phone;
-            
+
 
             eag.AddressLine1 = user.Address.AddressLine1;
-            _logger.LogInformation(""+eag.AddressLine1);
             eag.AddressLine2 = user.Address.AddressLine2;
             eag.State = user.Address.State;
             eag.Country = user.Address.Country;
@@ -76,18 +102,22 @@ namespace EmployeeApp.Portal.Controllers
             return View(eag);
         }
 
-        // GET: Employees/Create
+        
         [Route("Employees/Create")]
         public IActionResult Create()
         {
-          
             ViewBag.GroupName = new SelectList(_context.Groups, "Name", "Name");
-            return View();
+            if (HttpContext.User.IsInRole("Administrator"))
+            {
+                return View("CreateByAdmin");
+            }
+            else
+            {
+                return View("Create");
+            }
+            
         }
 
-        // POST: Employees/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Employees/CreateSave")]
@@ -105,8 +135,8 @@ namespace EmployeeApp.Portal.Controllers
                         AddressLine2 = eag.AddressLine2,
                         State = eag.State,
                         Country = eag.Country,
-                        CreatedPersonId = eag.createdPersonID,
-                        LastModifiedPersonId = eag.lastModifiedPersonID
+                        CreatedPersonId = 1,
+                        LastModifiedPersonId = 1
                     };
                     address = await _addressService.Create(address);
                     _logger.LogInformation(address.ToString());
@@ -114,18 +144,20 @@ namespace EmployeeApp.Portal.Controllers
                     {
                         Name = eag.Name,
                         DateOfJoining = eag.DateOfJoining,
-                        Address=address,
                         AddressId = address.Id,
                         IsActive = eag.IsActive,
                         Email = eag.Email,
                         Phone = eag.Phone,
                         Password = eag.Password,
-                        
+                        CreatedPersonId = 1,
+                        LastModifiedPersonId = 1
+
                     };
                     _logger.LogInformation("date of joining:" + user.DateOfJoining);
                     user = await _empservice.Create(user);
                     _logger.LogInformation("" + user.Address.AddressLine1);
-                    return RedirectToAction(nameof(Details),user);
+                    _logger.LogInformation("" + user.Id);
+                    return RedirectToAction(nameof(Details), new { id = user.Id });
                 }
                 catch (Exception e)
                 {
@@ -145,12 +177,70 @@ namespace EmployeeApp.Portal.Controllers
             
             return NotFound();
         }
+        [Route("Employees/CreateSaveAdmin")]
+        /*public async Task<IActionResult> CreateSaveAdmin([Bind("Name,Email,Phone,Password,DateOfJoining,GroupName,IsActive,AddressLine1,AddressLine2,State,Country,createdPersonID,lastModifiedPersonID")] EAGClientViewModel eag)
+        {
+            _logger.LogInformation("inside create save");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _logger.LogInformation(eag.ToString());
+                    var address = new Address
+                    {
+                        AddressLine1 = eag.AddressLine1,
+                        AddressLine2 = eag.AddressLine2,
+                        State = eag.State,
+                        Country = eag.Country,
+                        CreatedPersonId = 1,
+                        LastModifiedPersonId = 1
+                    };
+                    address = await _addressService.Create(address);
+                    _logger.LogInformation(address.ToString());
+                    var user = new User
+                    {
+                        Name = eag.Name,
+                        DateOfJoining = eag.DateOfJoining,
 
-        // GET: Employees/Edit/5
-        /*[Route("Employees/Edit/{id}/{addressid}")]
+                        AddressId = address.Id,
+                        IsActive = eag.IsActive,
+                        Email = eag.Email,
+                        Phone = eag.Phone,
+                        Password = eag.Password,
+                        CreatedPersonId = 1,
+                        LastModifiedPersonId = 1
+
+                    };
+                    _logger.LogInformation("date of joining:" + user.DateOfJoining);
+                    user = await _empservice.Create(user);
+                    _logger.LogInformation("" + user.Address.AddressLine1);
+                    _logger.LogInformation("" + user.Id);
+                    return RedirectToAction(nameof(Details), new { id = user.Id });
+                }
+                catch (Exception e)
+                {
+                    _logger.LogInformation(e.Message);
+                }
+
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    _logger.LogError(error.ErrorMessage);
+                }
+            }
+
+
+            return NotFound();
+        }
+*/
+        
+        [Route("Employees/Edit/{id}/{addressid}")]
         public async Task<IActionResult> Edit(int? id, int? addressid)
         {
-            ViewBag.GroupName = new SelectList(_context.Groups, "Name", "Name");
+
             TempData["empEditId"] = id;
             TempData["addEditId"] = addressid;
             _logger.LogInformation("inside edit page");
@@ -160,61 +250,57 @@ namespace EmployeeApp.Portal.Controllers
                 return NotFound();
             }
 
-            var employee = await _empservice.GetDetails(id);
+            var user = _context.Users
+                .Include(e => e.Address)
+                .Include(e => e.Group)
+                .FirstOrDefault(m => m.Id == id);
 
-            if (employee == null)
+            if (user == null)
             {
                 return NotFound();
             }
-            EAGViewModel eag = new EAGViewModel();
+            EAGClientViewModel eag = new EAGClientViewModel();
 
-            eag.Name = employee.Name;
-            eag.DateOfJoining = employee.DateOfJoining;
-            eag.AddressLine1 = employee.Address.AddressLine1;
-            eag.AddressLine2 = employee.Address.AddressLine2;
-            eag.GroupName = employee.Group.Name;
-            eag.IsActive = employee.IsActive;
-            eag.State = employee.Address.State;
-            eag.Country = employee.Address.Country;
-
+            eag.Name = user.Name;
+            eag.DateOfJoining = user.DateOfJoining;
+            eag.AddressLine1 = user.Address.AddressLine1;
+            eag.AddressLine2 = user.Address.AddressLine2;
+            eag.State = user.Address.State;
+            eag.Country = user.Address.Country;
+            eag.Email = user.Email;
+            eag.Phone = user.Phone;
             return View(eag);
-        }*/
+        }
 
-        // POST: Employees/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        /*[HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Employees/EditClicked")]
-        public async Task<IActionResult> EditClicked([Bind("Name,DateOfJoining,GroupName,IsActive,AddressLine1,AddressLine2,State,Country")] EAGClientViewModel eag)
+        public async Task<IActionResult> EditClicked([Bind("Name,AddressLine1,AddressLine2,State,Country,Email,Phone")] EAGClientViewModel eag)
         {
-                int empEditId = (int)TempData["empEditId"];
-                int addEditId = (int)TempData["addEditId"];
+            int empEditId = (int)TempData["empEditId"];
+            int addEditId = (int)TempData["addEditId"];
 
-                var emp = await _empservice.GetDetails(empEditId);
-                var address = emp.Address;
+            var emp = _context.Users
+            .Include(e => e.Address)
+            .Include(e => e.Group)
+            .FirstOrDefault(m => m.Id == empEditId);
+            var address = emp.Address;
 
-                address.AddressLine1 = eag.AddressLine1;
-                address.AddressLine2 = eag.AddressLine2;
-                address.State = eag.State;
-                address.Country = eag.Country;
+            address.AddressLine1 = eag.AddressLine1;
+            address.AddressLine2 = eag.AddressLine2;
+            address.State = eag.State;
+            address.Country = eag.Country;
                 
-                address = await _addressService.Edit(address);
-                var employee = await _empservice.GetDetails(empEditId);
+            _context.Update(address);
+            _context.SaveChanges();
 
-                    employee.Name = eag.Name;
-                    *//*employee.DateOfJoining = eag.DateOfJoining;*//*
-
-                employee.GroupId = _context.Groups
-                            .Where(g => g.Name == eag.GroupName)
-                            .Select(g => g.Id)
-                            .FirstOrDefault();
-                employee.IsActive = eag.IsActive;
-                
-
-                await _empservice.Edit(empEditId,employee);
-                return RedirectToAction(nameof(Index));    
-        }*/
+            emp.Name = eag.Name;
+            emp.Email = eag.Email;
+            emp.Phone = emp.Phone;
+            _context.Update(emp);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Details), new { id = emp.Id });
+        }
 
         // GET: Employees/Delete/5
         /*[Route("Employees/Delete/{id}")]
