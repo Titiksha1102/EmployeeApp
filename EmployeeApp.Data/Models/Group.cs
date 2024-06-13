@@ -7,7 +7,7 @@ namespace EmployeeApp.Data.Models
     {
         public Group()
         {
-            Users = new HashSet<User>();
+            
         }
 
         public int Id { get; set; }
@@ -17,6 +17,6 @@ namespace EmployeeApp.Data.Models
         public DateTime LastModified { get; set; }
         public int LastModifiedPersonId { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        
     }
 }

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeApp.Services", "Emp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeApp.Portal", "EmployeeApp.Portal\EmployeeApp.Portal.csproj", "{EA58F1BC-1211-4EF9-820B-2FE45F6B1231}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApp.PortalWithAuth", "EmployeeApp.PortalWithAuth\EmployeeApp.PortalWithAuth.csproj", "{A38E8F5C-5E9B-4018-989A-E1E14ABC841C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeApp.PortalWithAuth", "EmployeeApp.PortalWithAuth\EmployeeApp.PortalWithAuth.csproj", "{A38E8F5C-5E9B-4018-989A-E1E14ABC841C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeApp.ServiceApi", "EmployeeApp.ServiceApi\EmployeeApp.ServiceApi.csproj", "{E4093C43-F288-47FC-896B-B55FB48E0D17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A38E8F5C-5E9B-4018-989A-E1E14ABC841C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A38E8F5C-5E9B-4018-989A-E1E14ABC841C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A38E8F5C-5E9B-4018-989A-E1E14ABC841C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4093C43-F288-47FC-896B-B55FB48E0D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4093C43-F288-47FC-896B-B55FB48E0D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4093C43-F288-47FC-896B-B55FB48E0D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4093C43-F288-47FC-896B-B55FB48E0D17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

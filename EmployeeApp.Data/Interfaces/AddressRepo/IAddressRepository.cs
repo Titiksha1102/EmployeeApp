@@ -11,5 +11,8 @@ namespace EmployeeApp.Data.Interfaces.AddressRepo
     {
         public Task<Address> Create(Address address);
         public Task<Address> Edit(Address address);
+        public Task<bool> Delete(int id);
+        public Task<Address> GetAddress(int id);
+        public Task<IEnumerable<Address>> GetAddresses();
     }
 }

@@ -126,6 +126,10 @@ namespace EmployeeApp.Data.Data
 
                 entity.HasIndex(e => e.AddressId, "UQ__User__091C2A1A44CF3A5C")
                     .IsUnique();
+                entity.HasIndex(e => e.Name, "UserName_UNIQUE")
+                    .IsUnique();
+                entity.HasIndex(e => e.Email, "Email_UNIQUE")
+                    .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -164,13 +168,13 @@ namespace EmployeeApp.Data.Data
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Address)
-                    .WithOne(p => p.User)
+                    .WithOne()
                     .HasForeignKey<User>(d => d.AddressId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_User_Address");
 
                 entity.HasOne(d => d.Group)
-                    .WithMany(p => p.Users)
+                    .WithMany()
                     .HasForeignKey(d => d.GroupId)
                     .HasConstraintName("FK_User_Group")
                     .IsRequired(false);

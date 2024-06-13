@@ -15,42 +15,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\Visual studio 2022\projects\EmployeeApp\EmployeeApp.PortalWithAuth
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Employees/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Employees/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Employees/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Employees/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Employees/Landing.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXExhbmRpbmcuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Employees/LandingAdmin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXExhbmRpbmdBZG1pbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Employees/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXExvZ2luLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Employees/LoginInvalid.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXExvZ2luSW52YWxpZC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Employees/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVzXFJlZ2lzdGVyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Home/AdminPanel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pblBhbmVsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -77,6 +41,62 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/DetailsAdminView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlsc0FkbWluVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/EditAdminView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdEFkbWluVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/IndexAjax.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXhBamF4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/IndexAjax1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXhBamF4MS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/Landing.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTGFuZGluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/LandingAdminView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTGFuZGluZ0FkbWluVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/LoginInvalid.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW5JbnZhbGlkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/Users/RegisterAdminView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcUmVnaXN0ZXJBZG1pblZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Visual studio 2022/projects/EmployeeApp/EmployeeApp.PortalWithAuth/Views/_ViewImports.cshtml]

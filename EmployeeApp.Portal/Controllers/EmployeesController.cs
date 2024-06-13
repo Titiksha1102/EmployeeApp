@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using EmployeeApp.Data.Data;
 using EmployeeApp.Data.Models;
 using EmployeeApp.Portal.Models;
-using EmployeeApp.Services.EmployeeServiceFolder;
+using EmployeeApp.Services.UserServiceFolder;
 using EmployeeApp.Services.AddressServiceFolder;
 using System.Text.RegularExpressions;
 using System.Numerics;
@@ -20,13 +20,13 @@ namespace EmployeeApp.Portal.Controllers
     public class EmployeesController : Controller
     {
         private readonly EmployeeDB2Context _context;
-        private readonly IEmployeeService _empservice;
+        private readonly IUserService _empservice;
         private readonly IAddressService _addressService;
         private readonly ILogger<EmployeesController> _logger;
         private readonly List<string> _adminUsers;
 
         public EmployeesController(EmployeeDB2Context context, 
-            IEmployeeService empservice, 
+            IUserService empservice, 
             IAddressService addressService, 
             ILogger<EmployeesController> logger,
             List<string> adminUsers)

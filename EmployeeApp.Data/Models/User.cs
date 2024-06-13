@@ -21,5 +21,7 @@ namespace EmployeeApp.Data.Models
 
         public virtual Address Address { get; set; } = null!;
         public virtual Group? Group { get; set; }
+
+        
     }
 }

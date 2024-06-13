@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeApp.Data.Data;
-using EmployeeApp.Data.Interfaces.EmployeeRepo;
+using EmployeeApp.Data.Interfaces.UserRepo;
 using EmployeeApp.Data.Interfaces.AddressRepo;
-using EmployeeApp.Services.EmployeeServiceFolder;
+using EmployeeApp.Services.UserServiceFolder;
 using EmployeeApp.Services.AddressServiceFolder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,8 +45,8 @@ namespace EmployeeApp.Portal
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
            
-            services.AddScoped<IEmployeeService, EmployeeService>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAddressService, AddressService>();
             services.AddScoped<IAddressRepository, AddressRepository>();
         }

@@ -1,9 +1,13 @@
 using EmployeeApp.Data.Data;
 using EmployeeApp.Data.Interfaces.AddressRepo;
-using EmployeeApp.Data.Interfaces.EmployeeRepo;
+using EmployeeApp.Data.Interfaces.GroupRepo;
+using EmployeeApp.Data.Interfaces.UserRepo;
 using EmployeeApp.PortalWithAuth.Controllers;
+using EmployeeApp.ServiceApi.Controllers.AdressesService;
+using EmployeeApp.ServiceApi.Controllers.GroupsService;
+using EmployeeApp.ServiceApi.Controllers.UsersService;
 using EmployeeApp.Services.AddressServiceFolder;
-using EmployeeApp.Services.EmployeeServiceFolder;
+using EmployeeApp.Services.UserServiceFolder;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -36,11 +40,12 @@ namespace EmployeeApp.PortalWithAuth
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
             );
 
-            builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            builder.Services.AddScoped<IAddressService, AddressService>();
+            builder.Services.AddScoped<IUsersService, UsersServiceController>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IAddressesService, AddressesServiceController>();
             builder.Services.AddScoped<IAddressRepository, AddressRepository>();
-
+            builder.Services.AddScoped<IGroupsService, GroupsServiceController>();
+            builder.Services.AddScoped<IGroupRepository, GroupRepository>();
             builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
             .AddNegotiate();
 
