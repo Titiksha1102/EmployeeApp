@@ -1,8 +1,0 @@
-document.getElementById('confirmpass').addEventListener("blur", () => {
-    if (firstpass == confirmpass) {
-        document.getElementById("passmatchwarning").innerHTML = "Confirm password must match original password"
-    }
-    else {
-        document.getElementById("passmatchwarning").innerHTML = ""
-    }
-})

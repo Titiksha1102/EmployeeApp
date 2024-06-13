@@ -1,9 +1,0 @@
-columns.Add(model => model.Address).Titled("Address")
-.RenderedAs(model =>
-{
-    var address = model.Address;
-    var fullAddress = address.AddressLine2 != null
-        ? $"{address.AddressLine1}, {address.AddressLine2}, {address.State}, {address.Country}"
-        : $"{address.AddressLine1}, {address.State}, {address.Country}";
-    return fullAddress;
-})
