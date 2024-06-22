@@ -129,14 +129,13 @@ namespace EmployeeApp.ServiceApi.Controllers.UsersService
         {
             try
             {
-                
                 var result = await _emprepo.Edit(user);
                 return Ok(result);
             }
             catch(Exception e)
             {
                 _logger.LogInformation("inside catch block");
-                _logger.LogInformation($"Error in editing user details: {e.Message}");
+                _logger.LogInformation($"Error in editing user details: {e.InnerException.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }

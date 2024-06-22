@@ -126,6 +126,10 @@
               "target": "Package",
               "version": "[6.0.30, )"
             },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
             "NonFactors.Grid.Mvc6": {
               "target": "Package",
               "version": "[7.2.1, )"

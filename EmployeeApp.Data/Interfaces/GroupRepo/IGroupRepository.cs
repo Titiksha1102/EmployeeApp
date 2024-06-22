@@ -15,7 +15,7 @@ namespace EmployeeApp.Data.Interfaces.GroupRepo
         public Task<bool> Delete(int id);
         public Task<Group> GetGroup(int id);
         public Task<IEnumerable<string>> GetGroups();
-        public string GetGroupName(int id);
+        public Task<string> GetGroupName(int id);
         public int GetGroupId(string name);
     }
 }

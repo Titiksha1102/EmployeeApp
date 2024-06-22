@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EmployeeApp.Data.Models.User>
+@using NonFactors.Mvc.Grid
+@using Microsoft.AspNetCore.Html
+<html>
+    <head>
+    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+    </head>
+    <body>
+    @(
+        Html.Grid(Model).Build(columns =>
+        {
+            columns.Add(model => model.Name).Titled("Name").Filterable(true).Sortable(true);
+            columns.Add(model => model.Email).Titled("Email").Filterable(true).Sortable(true);
+            columns.Add(model => model.Phone).Titled("Phone").Filterable(true).Sortable(true);
+            columns.Add(model => model.Address).Titled("Address")
+            .RenderedAs(model =>
+            {
+                var address = model.Address;
+                var fullAddress = address.AddressLine2 != null
+            ? $"{address.AddressLine1}, {address.AddressLine2}, {address.State}, {address.Country}"
+            : $"{address.AddressLine1}, {address.State}, {address.Country}";
+                return fullAddress;
+            }).Filterable(GridFilterType.Multi).Sortable(true);
+
+            columns.Add()
+            .RenderedAs(model => new HtmlString($@"
+                <a href='EditAdminView/{model.Id}/{model.Address.Id}'>Edit</a> |
+                <a href='DetailsAdminView/{model.Id}'>Details</a> |
+                <a href='Delete/{model.Id}'>Delete</a>"))
+            .Titled("Actions")
+            .Css("text-center");
+
+        })
+    )
+    <script src="~/js/mvc-grid/mvc-grid.js"></script>
+    <script>
+        document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+        document.getElementById("CheckAll").addEventListener("change", function () {
+            document.querySelectorAll("[id^='Check_'").forEach(checkbox => checkbox.checked = this.checked);
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Get All Employees</title>
+</head>
+<body>
+
+    <div>
+        <button id="getAllEmployeesButton">Get All Employees</button>
+    </div>
+
+    <div id="employeesTableContainer"></div>
+
+    <script>
+        document.getElementById('getAllEmployeesButton').addEventListener('click', function() {
+            fetch('https://localhost:7073/api/Users')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayEmployees(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('employeesTableContainer').innerHTML = '<p>Error retrieving employees</p>';
+                });
+        });
+
+        function displayEmployees(employees) {
+            var container = document.getElementById('employeesTableContainer');
+            container.innerHTML = ''; // Clear previous results
+
+            if (employees.length === 0) {
+                container.innerHTML = '<p>No employees found</p>';
+                return;
+            }
+
+            var table = document.createElement('table');
+            table.border = '1';
+            var thead = document.createElement('thead');
+            var tbody = document.createElement('tbody');
+
+            // Define table headers
+            var headers = ['ID', 'Name', 'Email', 'Phone', 'Date of Joining','Country'];
+            var tr = document.createElement('tr');
+            headers.forEach(header => {
+                var th = document.createElement('th');
+                th.textContent = header;
+                tr.appendChild(th);
+            });
+            thead.appendChild(tr);
+
+            // Fill table rows with employee data
+            employees.forEach(employee => {
+                var tr = document.createElement('tr');
+                var tdId = document.createElement('td');
+                tdId.textContent = employee.id;
+                tr.appendChild(tdId);
+
+                var tdName = document.createElement('td');
+                tdName.textContent = employee.name;
+                tr.appendChild(tdName);
+
+                var tdEmail = document.createElement('td');
+                tdEmail.textContent = employee.email;
+                tr.appendChild(tdEmail);
+
+                var tdPhone = document.createElement('td');
+                tdPhone.textContent = employee.phone;
+                tr.appendChild(tdPhone);
+
+                var tdDateOfJoining = document.createElement('td');
+                tdDateOfJoining.textContent = new Date(employee.dateOfJoining).toLocaleDateString();
+                tr.appendChild(tdDateOfJoining);
+
+                var tdCountry = document.createElement('td');
+                tdCountry.textContent = employee.address.country;
+                tr.appendChild(tdCountry);
+
+                tbody.appendChild(tr);
+            });
+
+            table.appendChild(thead);
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+    </script>
+
+</body>
+</html>
+

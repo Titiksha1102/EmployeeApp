@@ -1,0 +1,146 @@
+﻿@model EmployeeApp.PortalWithAuth.Models.EAGViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+<html>
+    <head>
+
+    </head>
+    <body>
+    
+    <h1>Registration</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="RegisterSave">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" id="EmailAddress"/>
+                    <span asp-validation-for="Email" class="text-danger" id="emailwarning"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label"></label>
+                    <input asp-for="Phone" id="phonenumber"  class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                    <span  id="phonewarning" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AddressLine1" class="control-label"></label>
+                    <input asp-for="AddressLine1" class="form-control" />
+                    <span asp-validation-for="AddressLine1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressLine2" class="control-label"></label>
+                    <input asp-for="AddressLine2" class="form-control" />
+                    <span asp-validation-for="AddressLine2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="State" class="control-label"></label>
+                    <input asp-for="State" class="form-control" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label"></label>
+                    <input asp-for="Country" class="form-control" />
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Enter new password</label>
+                    <input asp-for="Password" class="form-control" id="firstpass" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Confirm password</label>
+                    <input asp-for="ConfirmPassword" class="form-control" id="confirmpass" />
+                    <span asp-validation-for="ConfirmPassword" id="passmatchwarning" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+   @*  <script>
+        
+        var phoneregex = /^\d{10}$/
+        document.getElementById('phonenumber').addEventListener("input", validatePhone)
+        function validatePhone() {
+            var phoneInput = document.getElementById("phonenumber").value;
+            if (phoneregex.test(phoneInput) == false) {
+
+                document.getElementById('phonewarning').innerHTML = "Please enter a valid phone number"
+
+            }
+            else{
+                document.getElementById('phonewarning').innerHTML = ""
+            }
+
+        }
+        //email validation
+        document.getElementById("EmailAddress").addEventListener("input", validateMail)
+
+        var emailRegex = /^[a-zA-Z0-9]+@@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
+
+        function validateMail() {
+            var emailInput = document.getElementById("EmailAddress").value;
+            if (emailRegex.test(emailInput) == false) {
+
+                document.getElementById('emailwarning').innerHTML = "Please enter a valid mail address"
+
+            }
+            else{
+                document.getElementById('emailwarning').innerHTML = ""
+            }
+
+        }
+        //confirm password validation
+        document.getElementById('firstpass').addEventListener("input", matchPass)
+        document.getElementById('firstpass').addEventListener("blur", matchPassblur)
+        document.getElementById('confirmpass').addEventListener("input", matchPass)
+        document.getElementById('confirmpass').addEventListener("blur", matchPassblur)
+        function matchPass() {
+            var firstpass = document.getElementById('firstpass').value
+            var confirmpass = document.getElementById('confirmpass').value
+            if (firstpass === confirmpass) {
+                
+                document.getElementById("passmatchwarning").innerHTML = ""
+            }
+            else {
+                document.getElementById("passmatchwarning").innerHTML = "Confirm password must match original password"
+            }
+
+        }
+        function matchPassblur() {
+            var firstpass = document.getElementById('firstpass').value
+            var confirmpass = document.getElementById('confirmpass').value
+            if (firstpass === confirmpass) {
+                console.log("inside if statement")
+                document.getElementById("passmatchwarning").innerHTML = ""
+            }
+            else {
+                document.getElementById("passmatchwarning").innerHTML = "Confirm password must match original password"
+            }
+
+        }
+
+
+    </script> *@
+    </body>
+
+
+</html>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

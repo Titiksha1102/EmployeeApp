@@ -126,8 +126,7 @@ namespace EmployeeApp.Data.Data
 
                 entity.HasIndex(e => e.AddressId, "UQ__User__091C2A1A44CF3A5C")
                     .IsUnique();
-                entity.HasIndex(e => e.Name, "UserName_UNIQUE")
-                    .IsUnique();
+                
                 entity.HasIndex(e => e.Email, "Email_UNIQUE")
                     .IsUnique();
 

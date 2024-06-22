@@ -31,15 +31,15 @@ namespace EmployeeApp.ServiceApi.Controllers.GroupsService
         {
             return await _grprepo.GetGroup(id);
         }
-        [HttpGet("GetGroupId")]
+        [HttpGet("GetGroupId/{name}")]
         public async Task<ActionResult<int>> GetGroupId(string name)
         {
             return _grprepo.GetGroupId(name);
         }
-        [HttpGet("GetGroupName")]
+        [HttpGet("GetGroupName/{id}")]
         public async Task<ActionResult<string>> GetGroupName(int id)
         {
-            return _grprepo.GetGroupName(id);
+            return await _grprepo.GetGroupName(id);
         }
         [HttpGet("GetGroups")]
         public async Task<ActionResult<IEnumerable<string>>> GetGroups()

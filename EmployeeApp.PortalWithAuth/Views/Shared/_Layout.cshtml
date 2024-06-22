@@ -8,72 +8,47 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EmployeeApp.PortalWithAuth.styles.css" asp-append-version="true" />
     <style>
-        body {
-            overflow-x: hidden;
-        }
-
-        .navbar-collapse {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #fff;
-            transition: left 0.3s ease;
-            z-index: 1000;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        }
-
-            .navbar-collapse.show {
-                left: 0;
-            }
-
-        .navbar-toggler {
-            z-index: 1100;
-        }
-
-        .navbar-nav {
-            margin-top: 3rem;
-            margin-left: 1rem;
-        }
+        
     </style>
 
 </head>
 <body>
     <header>
         <nav class="navbar navbar-light bg-light">
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-controller="Users" asp-action="Landing">Landing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Users" asp-action="LandingAdminView">Landing Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Users" asp-action="IndexAjax1">IndexAjax1</a>
-                    </li>
-                </ul>
+            <div class="px-4">
+                <a class="navbar-brand " asp-area="" asp-controller="Users" asp-action="Landing">Employee Portal</a>
             </div>
+            @* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button> *@
 
-            <a class="navbar-brand" asp-area="" asp-controller="Users" asp-action="Landing">Employee Portal</a>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <main role="main" class="d-flex pb-3" style="height:100vh;">
+        <div class="bg-light p-4 pb-5">
+            <ul class="navbar-nav d-flex flex-column ">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-controller="Users" asp-action="Landing">Landing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Users" asp-action="LandingAdminView">Landing Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Users" asp-action="IndexAjax1">IndexAjax1</a>
+                </li>
+            </ul>
+        </div>
+        <div class="ps-3 pt-3 pe-3 flex-fill">
             @RenderBody()
-        </main>
-    </div>
+        </div>
 
-    <footer class="border-top footer text-muted">
+    </main>
+
+    @* <footer class="border-top footer text-muted mt-5">
         <div class="container">
             &copy; 2024 - EmployeeApp.PortalWithAuth - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer> *@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

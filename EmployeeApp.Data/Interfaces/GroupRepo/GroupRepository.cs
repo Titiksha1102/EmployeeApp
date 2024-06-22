@@ -56,12 +56,12 @@ namespace EmployeeApp.Data.Interfaces.GroupRepo
             return groupId;
         }
 
-        public string GetGroupName(int id)
+        public Task<string> GetGroupName(int id)
         {
             var groupName = _context.Groups
                                 .Where(g => g.Id == id)
                                 .Select(g => g.Name)
-                                .FirstOrDefault();
+                                .FirstOrDefaultAsync();
             return groupName;
         }
 

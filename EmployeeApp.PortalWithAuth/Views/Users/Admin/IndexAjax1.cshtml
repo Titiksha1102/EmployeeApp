@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Get All Employees</title>
+    <style>
+        /* Add some basic styling */
+        #filterContainer {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div id="filterContainer">
+    <label for="filterSelect">Filter by:</label>
+    <select id="filterSelect">
+        <option value="">Select Filter</option>
+        <option value="name">Name</option>
+        <option value="country">Country</option>
+        <option value="experience">Years of Experience</option>
+    </select>
+    <input type="text" id="filterInput" placeholder="Enter filter value">
+    <button id="filterButton">Filter</button>
+</div>
+
+<div id="employeesTableContainer"></div>
+
+<script>
+    document.getElementById('filterButton').addEventListener('click', function() {
+        var filterType = document.getElementById('filterSelect').value;
+        var filterValue = document.getElementById('filterInput').value;
+        
+        if (!filterType || !filterValue) {
+            alert('Please select a filter type and enter a filter value');
+            return;
+        }
+        
+        let url = 'https://localhost:7073/api/UsersServiceApi/';
+        switch (filterType) {
+            case 'name':
+                url += 'GetByNameList/' + encodeURIComponent(filterValue);
+                break;
+            case 'country':
+                url += 'GetByCountry/' + encodeURIComponent(filterValue);
+                break;
+            case 'experience':
+                url += 'GetByExperience/' + encodeURIComponent(filterValue);
+                break;
+            default:
+                alert('Invalid filter type');
+                return;
+        }
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                displayEmployees(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('employeesTableContainer').innerHTML = '<p>Error retrieving employees</p>';
+            });
+    });
+
+    function displayEmployees(employees) {
+        var container = document.getElementById('employeesTableContainer');
+        container.innerHTML = ''; // Clear previous results
+
+        if (employees.length === 0) {
+            container.innerHTML = '<p>No employees found</p>';
+            return;
+        }
+
+        var table = document.createElement('table');
+        var thead = document.createElement('thead');
+        var tbody = document.createElement('tbody');
+
+        // Define table headers
+        var headers = ['ID', 'Name', 'Email', 'Phone', 'Date of Joining', 'Address'];
+        var tr = document.createElement('tr');
+        headers.forEach(header => {
+            var th = document.createElement('th');
+            th.textContent = header;
+            tr.appendChild(th);
+        });
+        thead.appendChild(tr);
+
+        // Fill table rows with employee data
+        employees.forEach(employee => {
+            var tr = document.createElement('tr');
+            var tdId = document.createElement('td');
+            tdId.textContent = employee.id;
+            tr.appendChild(tdId);
+
+            var tdName = document.createElement('td');
+            tdName.textContent = employee.name;
+            tr.appendChild(tdName);
+
+            var tdEmail = document.createElement('td');
+            tdEmail.textContent = employee.email;
+            tr.appendChild(tdEmail);
+
+            var tdPhone = document.createElement('td');
+            tdPhone.textContent = employee.phone;
+            tr.appendChild(tdPhone);
+
+            var tdDateOfJoining = document.createElement('td');
+            if (employee.dateOfJoining===null){
+                tdDateOfJoining.textContent = "Not assigned"
+            }
+            else{
+                    tdDateOfJoining.textContent = new Date(employee.dateOfJoining).toLocaleDateString();
+            }
+            
+            tr.appendChild(tdDateOfJoining);
+
+            var tdAddress = document.createElement('td');
+            tdAddress.textContent = employee.address ? `${employee.address.addressLine1}, ${employee.address.addressLine2}, ${employee.address.state}, ${employee.address.country}` : 'N/A';
+            tr.appendChild(tdAddress);
+
+            tbody.appendChild(tr);
+        });
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        container.appendChild(table);
+    }
+
+    // Load all employees on page load
+        fetch('https://localhost:7073/api/UsersServiceApi')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            displayEmployees(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('employeesTableContainer').innerHTML = '<p>Error retrieving employees</p>';
+        });
+</script>
+
+</body>
+</html>
+

@@ -82,8 +82,8 @@ namespace EmployeeApp.Data.Interfaces.UserRepo
                 .AsNoTracking()
                 .Include(e => e.Address)
                 .Include(e => e.Group)
-                .FirstOrDefault(m => m.Id == id)
-                ;
+                
+                .FirstOrDefault(m => m.Id == id);
             if (user == null)
             {
                 throw new Exception("User not found");
