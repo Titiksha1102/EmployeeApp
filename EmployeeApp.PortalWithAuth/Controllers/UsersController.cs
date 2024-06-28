@@ -21,9 +21,11 @@ using EmployeeApp.ServiceApi.Controllers.UsersService;
 using EmployeeApp.ServiceApi.Controllers.AdressesService;
 using Newtonsoft.Json;
 using EmployeeApp.ServiceApi.Controllers.GroupsService;
+using System.Security.Claims;
 
 namespace EmployeeApp.PortalWithAuth.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class UsersController : Controller
     {
@@ -32,26 +34,38 @@ namespace EmployeeApp.PortalWithAuth.Controllers
         private readonly IAddressesService _addressService;
         private readonly IGroupsService _grpService;
         private readonly ILogger<UsersController> _logger;
-        private readonly List<string> _adminUsers;
+        
         public UsersController(EmployeeDB2Context context, 
             IUsersService empservice, 
             IAddressesService addressService,
             IGroupsService grpService,
-            ILogger<UsersController> logger,
-            List<string> adminUsers )
+            ILogger<UsersController> logger
+             )
         {
             _context = context;
             _empService = empservice;
             _addressService = addressService;
             _grpService = grpService;
             _logger = logger;
-            _adminUsers = adminUsers;
+           
         }
 
         //Client Actions
         [Route("/")]
         public async Task<IActionResult> Landing()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var claims = User.Claims;
+                foreach (var claim in claims)
+                {
+                    Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+                }
+                // Example: Get specific claim
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                return RedirectToAction(nameof(Details), new { id = userId });
+
+            }
             return View("Views/Users/Client/Landing.cshtml");
 
             /*if (_adminUsers.Contains(HttpContext.User.Identity.Name))

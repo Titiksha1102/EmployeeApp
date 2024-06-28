@@ -20,7 +20,7 @@ namespace EmployeeApp.PortalWithAuth
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+           /* // Add services to the container.
             var adminUsers = new List<string> { "DESKTOP-49J7JJ2\\Titiksha", "DESKTOP-49J7JJ2\\HP" };
             builder.Services.AddSingleton(adminUsers);
 
@@ -30,11 +30,11 @@ namespace EmployeeApp.PortalWithAuth
                 options.IdleTimeout = TimeSpan.FromSeconds(60);
             });
 
-            builder.Services.AddScoped<CustAuthAttribute>();
+            builder.Services.AddScoped<CustAuthAttribute>();*/
             
             builder.Services.AddLogging();
-            builder.Services.AddControllers();
-            builder.Services.AddMvc(options => options.EnableEndpointRouting = false);
+            builder.Services.AddControllersWithViews();
+            /*builder.Services.AddMvc(options => options.EnableEndpointRouting = false);*/
             builder.Services.AddDbContext<EmployeeDB2Context>(
             options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
@@ -46,20 +46,33 @@ namespace EmployeeApp.PortalWithAuth
             builder.Services.AddScoped<IAddressRepository, AddressRepository>();
             builder.Services.AddScoped<IGroupsService, GroupsServiceController>();
             builder.Services.AddScoped<IGroupRepository, GroupRepository>();
-            builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
-            .AddNegotiate();
 
-            builder.Services.AddAuthorization(options =>
+
+            builder.Services.AddAuthentication(options =>
             {
-                // By default, all incoming requests will be authorized according to the default policy.
-                options.FallbackPolicy = options.DefaultPolicy;
+                options.DefaultScheme = "cookie";
+                options.DefaultChallengeScheme = "oidc";
+                
+            }).
+            .AddCookie("cookie")
+            .AddOpenIdConnect("oidc", options =>
+            {
+                options.Authority = "https://localhost:7115";
+                options.ClientId = "oidcMVCApp";
+                options.ClientSecret = "ProCodeGuide";
+                options.ResponseType = "code";
+                options.UsePkce = true;
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.ResponseMode = "query";
+                options.Scope.Add("weatherApi.read");
+                options.SaveTokens = true;
             });
-            builder.Services.AddRazorPages();
+            
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            app.UseSession();
+            
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
@@ -69,13 +82,17 @@ namespace EmployeeApp.PortalWithAuth
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            
-
+            app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseMvc();
+            /*app.UseMvc();*/
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=User}/{action=Landing}/{id?}");
+            });
 
             app.Run();
         }
