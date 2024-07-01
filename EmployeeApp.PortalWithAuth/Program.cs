@@ -8,9 +8,12 @@ using EmployeeApp.ServiceApi.Controllers.GroupsService;
 using EmployeeApp.ServiceApi.Controllers.UsersService;
 using EmployeeApp.Services.AddressServiceFolder;
 using EmployeeApp.Services.UserServiceFolder;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace EmployeeApp.PortalWithAuth
 {
@@ -53,7 +56,7 @@ namespace EmployeeApp.PortalWithAuth
                 options.DefaultScheme = "cookie";
                 options.DefaultChallengeScheme = "oidc";
                 
-            }).
+            })
             .AddCookie("cookie")
             .AddOpenIdConnect("oidc", options =>
             {
@@ -66,8 +69,28 @@ namespace EmployeeApp.PortalWithAuth
                 options.ResponseMode = "query";
                 options.Scope.Add("weatherApi.read");
                 options.SaveTokens = true;
+                options.SignedOutCallbackPath = "/signout-callback-oidc";
+                options.SignedOutRedirectUri = "https://localhost:7011/";
+                options.Scope.Add("role");
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
+                options.Scope.Add("email");
+                options.Scope.Add("CustomClaim");
+                options.ClaimActions.MapJsonKey("role", "role", "role");
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = "name",
+                    RoleClaimType = "role"
+                };
             });
-            
+            builder.Services.AddAuthorization(options =>
+            {
+                
+                options.AddPolicy("CustomPolicy", policy =>
+                {
+                    policy.RequireClaim("role", "admin");
+                });
+            });
 
             var app = builder.Build();
 
@@ -92,6 +115,10 @@ namespace EmployeeApp.PortalWithAuth
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=User}/{action=Landing}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "signout-callback-oidc",
+                    pattern: "signout-callback-oidc",
+                    defaults: new { controller = "Home", action = "LogoutCallback" });
             });
 
             app.Run();

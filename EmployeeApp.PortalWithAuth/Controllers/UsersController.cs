@@ -22,6 +22,7 @@ using EmployeeApp.ServiceApi.Controllers.AdressesService;
 using Newtonsoft.Json;
 using EmployeeApp.ServiceApi.Controllers.GroupsService;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace EmployeeApp.PortalWithAuth.Controllers
 {
@@ -51,6 +52,7 @@ namespace EmployeeApp.PortalWithAuth.Controllers
         }
 
         //Client Actions
+        [AllowAnonymous]
         [Route("/")]
         public async Task<IActionResult> Landing()
         {
@@ -80,6 +82,21 @@ namespace EmployeeApp.PortalWithAuth.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var claims = User.Claims;
+                foreach (var claim in claims)
+                {
+                    Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+                }
+                // Example: Get specific claim
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                return RedirectToAction(nameof(Details), new { id = userId });
+            }
+            else
+            {
+                return RedirectToAction(nameof(Login));
+            }
             return View("Views/Users/Client/Login.cshtml");
         }
         [HttpPost]
@@ -138,7 +155,8 @@ namespace EmployeeApp.PortalWithAuth.Controllers
             }
             return View("Views/Users/Client/Details.cshtml", eag);
         }
-        
+
+        [AllowAnonymous]
         [Route("Register")]
         public IActionResult Register()
         {
@@ -282,11 +300,35 @@ namespace EmployeeApp.PortalWithAuth.Controllers
             await _empService.PutUser(emp);
             return RedirectToAction(nameof(Details), new { id = emp.Id });
         }
-        
+
+
+        //Logout
+        [HttpGet]
+        [Route("Logout")]
+        public IActionResult Logout()
+        {
+            // Sign out locally and trigger OIDC logout
+            return SignOut(
+                new AuthenticationProperties
+                {
+                    RedirectUri = "/"
+                },
+                "cookie",
+                "oidc");
+        }
+
+        [HttpGet]
+        [Route("LogoutCallback")]
+        public IActionResult LogoutCallback()
+        {
+            // Handle the logout callback from the identity provider
+            return RedirectToAction("Landing");
+        }
 
 
         //Admin actions
         [Route("/LandingAdminView")]
+        [Authorize(Policy = "CustomPolicy")]
         public async Task<IActionResult> LandingAdminView()
         {
             return View("Views/Users/Admin/LandingAdminView.cshtml");

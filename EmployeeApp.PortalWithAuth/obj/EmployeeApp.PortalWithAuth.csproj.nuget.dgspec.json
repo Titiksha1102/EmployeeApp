@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.PortalWithAuth\\EmployeeApp.PortalWithAuth.csproj": {}
+    "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.PortalWithAuth\\EmployeeApp.PortalWithAuth.csproj": {}
   },
   "projects": {
-    "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj": {
+    "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj",
         "projectName": "EmployeeApp.Data",
-        "projectPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Data\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -71,18 +71,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.422\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.PortalWithAuth\\EmployeeApp.PortalWithAuth.csproj": {
+    "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.PortalWithAuth\\EmployeeApp.PortalWithAuth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.PortalWithAuth\\EmployeeApp.PortalWithAuth.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.PortalWithAuth\\EmployeeApp.PortalWithAuth.csproj",
         "projectName": "EmployeeApp.PortalWithAuth",
-        "projectPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.PortalWithAuth\\EmployeeApp.PortalWithAuth.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.PortalWithAuth\\EmployeeApp.PortalWithAuth.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.PortalWithAuth\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.PortalWithAuth\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -99,11 +99,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj": {
-                "projectPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj"
+              "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj"
               },
-              "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj": {
-                "projectPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj"
+              "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj"
               }
             }
           }
@@ -166,18 +166,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.422\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj": {
+    "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj",
         "projectName": "EmployeeApp.ServiceApi",
-        "projectPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.ServiceApi\\EmployeeApp.ServiceApi.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.ServiceApi\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.ServiceApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -194,8 +194,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj": {
-                "projectPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj"
+              "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj"
               }
             }
           }
@@ -256,18 +256,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.422\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj": {
+    "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj",
         "projectName": "EmployeeApp.Services",
-        "projectPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Services\\EmployeeApp.Services.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Services\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -284,8 +284,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj": {
-                "projectPath": "E:\\Visual studio 2022\\projects\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj"
+              "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj": {
+                "projectPath": "C:\\Users\\HP\\Desktop\\EmployeeApp\\EmployeeApp.Data\\EmployeeApp.Data.csproj"
               }
             }
           }
@@ -321,7 +321,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.422\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
